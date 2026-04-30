@@ -36,3 +36,6 @@ A web-based ticket reservation system that allows users to book bus and train ti
 2. Place project folder in `htdocs`
 3. Import database in **phpMyAdmin**
 4. Run in browser:
+5. Open browser and run:
+
+http://localhost/Integrated-Train-and-Bus-Ticket-Reservation-System
