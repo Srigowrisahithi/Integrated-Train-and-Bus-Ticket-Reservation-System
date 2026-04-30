@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Registration</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+        }
+
+        header, footer {
+            background-color: orange;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            border: 1px solid #ccc;
+            padding: 25px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            background-color: orange;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: orange;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        function validateForm() {
+            let name = document.forms["regForm"]["full_name"].value;
+            let email = document.forms["regForm"]["email"].value;
+            let mobile = document.forms["regForm"]["mobile"].value;
+            let username = document.forms["regForm"]["username"].value;
+            let password = document.forms["regForm"]["password"].value;
+            let confirm = document.forms["regForm"]["confirm_password"].value;
+
+            let nameRegex = /^[A-Za-z ]{3,}$/;
+            let emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            let mobileRegex = /^[6-9]\d{9}$/;
+            let usernameRegex = /^[a-zA-Z0-9_]{4,}$/;
+            let passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/;
+
+            if (!nameRegex.test(name)) {
+                alert("Enter valid full name");
+                return false;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Enter valid email");
+                return false;
+            }
+            if (!mobileRegex.test(mobile)) {
+                alert("Enter valid mobile number");
+                return false;
+            }
+            if (!usernameRegex.test(username)) {
+                alert("Username must be at least 4 characters");
+                return false;
+            }
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain uppercase, lowercase, number & special character");
+                return false;
+            }
+            if (password !== confirm) {
+                alert("Passwords do not match");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+<header>Ticket Reservation System</header>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form name="regForm" action="register.php" method="post" onsubmit="return validateForm()">
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="mobile" placeholder="Mobile Number" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- Already User Section -->
+    <div class="login-link">
+        Already a user? <a href="login.html">Login here</a>
+    </div>
+     
+</div>
+
+<footer>© 2026 Ticket Reservation System</footer>
+
+</body>
+</html>
